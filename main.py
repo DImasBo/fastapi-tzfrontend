@@ -49,7 +49,7 @@ def get_images():
 def read_root():
     return "hello world"
 
-@app.get("/images/{image_id}")
+@app.get("/images/{image_id}/")
 def get_image(image_id: int):
     if image_id<7 and image_id>0:
         return {"src": f'http://127.0.0.1:8000/static/{image_id}.jpg'}
@@ -59,7 +59,7 @@ def get_image(image_id: int):
 def create_comment(comment: schemas.CommentCreate, db: Session = Depends(get_db)):
     return crud.create_comment(db=db, comment=comment)
 
-@app.get("/comments/{image_id}")
+@app.get("/comments/{image_id}/")
 def get_comments(image_id: int,db: Session = Depends(get_db)):
     comments = crud.get_comments(db, image_id)
     if comments:
