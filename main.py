@@ -45,10 +45,14 @@ def get_images():
         {"image_id":6,'src':'http://127.0.0.1:8000/static/6.jpg'}
     ]
 
+@app.get("/")
+def read_root():
+    return "hello world"
+
 @app.get("/images/{image_id}")
 def get_image(image_id: int):
     if image_id<7 and image_id>0:
-        return f'http://127.0.0.1:8000/static/{image_id}.jpg'
+        return {"src": f'http://127.0.0.1:8000/static/{image_id}.jpg'}
     return HTTPException(status_code=404, detail="Image not found")
 
 @app.post("/comments/add/")
