@@ -31,18 +31,18 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+site = 'https://tzfrontend.herokuapp.com'
 app.mount("/static", StaticFiles(directory="static", html=True ), name="static")
 
 @app.get("/images/")
 def get_images():
     return [
-        {"image_id":1,'src':'http://127.0.0.1:8000/static/1_small.jpg'},
-        {"image_id":2,'src':'http://127.0.0.1:8000/static/2_small.jpg'},
-        {"image_id":3,'src':'http://127.0.0.1:8000/static/3_small.jpg'},
-        {"image_id":4,'src':'http://127.0.0.1:8000/static/4_small.jpg'},
-        {"image_id":5,'src':'http://127.0.0.1:8000/static/5_small.jpg'},
-        {"image_id":6,'src':'http://127.0.0.1:8000/static/6_small.jpg'}
+        {"image_id":1,'src':f'{site}/static/1_small.jpg'},
+        {"image_id":2,'src':f'{site}/static/2_small.jpg'},
+        {"image_id":3,'src':f'{site}/static/3_small.jpg'},
+        {"image_id":4,'src':f'{site}/static/4_small.jpg'},
+        {"image_id":5,'src':f'{site}/static/5_small.jpg'},
+        {"image_id":6,'src':f'{site}/static/6_small.jpg'}
     ]
 
 @app.get("/")
@@ -52,7 +52,7 @@ def read_root():
 @app.get("/images/{image_id}/")
 def get_image(image_id: int):
     if image_id<7 and image_id>0:
-        return {"src": f'http://127.0.0.1:8000/static/{image_id}.jpg'}
+        return {"src": f'{site}/static/{image_id}.jpg'}
     return HTTPException(status_code=404, detail="Image not found")
 
 @app.post("/comments/add/")
