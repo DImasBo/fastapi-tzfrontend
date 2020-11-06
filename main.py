@@ -37,12 +37,12 @@ app.mount("/static", StaticFiles(directory="static", html=True ), name="static")
 @app.get("/images/")
 def get_images():
     return [
-        {"image_id":1,'src':'http://127.0.0.1:8000/static/1.jpg'},
-        {"image_id":2,'src':'http://127.0.0.1:8000/static/2.jpg'},
-        {"image_id":3,'src':'http://127.0.0.1:8000/static/3.jpg'},
-        {"image_id":4,'src':'http://127.0.0.1:8000/static/4.jpg'},
-        {"image_id":5,'src':'http://127.0.0.1:8000/static/5.jpg'},
-        {"image_id":6,'src':'http://127.0.0.1:8000/static/6.jpg'}
+        {"image_id":1,'src':'http://127.0.0.1:8000/static/1_small.jpg'},
+        {"image_id":2,'src':'http://127.0.0.1:8000/static/2_small.jpg'},
+        {"image_id":3,'src':'http://127.0.0.1:8000/static/3_small.jpg'},
+        {"image_id":4,'src':'http://127.0.0.1:8000/static/4_small.jpg'},
+        {"image_id":5,'src':'http://127.0.0.1:8000/static/5_small.jpg'},
+        {"image_id":6,'src':'http://127.0.0.1:8000/static/6_small.jpg'}
     ]
 
 @app.get("/")
