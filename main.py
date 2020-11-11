@@ -62,6 +62,8 @@ def create_comment(comment: schemas.CommentCreate, db: Session = Depends(get_db)
 @app.get("/comments/{image_id}/")
 def get_comments(image_id: int,db: Session = Depends(get_db)):
     comments = crud.get_comments(db, image_id)
+    if image_id < 1 or image_id > 6:
+        raise HTTPException(status_code=404, detail="Image not found")
     if comments:
         return comments
-    return HTTPException(status_code=404, detail="Image not found")
+    raise HTTPException(status_code=207,detail="This image is without comments")
